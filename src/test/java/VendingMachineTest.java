@@ -1,5 +1,6 @@
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.nio.channels.Pipe;
 
@@ -16,6 +17,8 @@ AutomatZBatinami testObject=new AutomatZBatinami(kasa,produkty);
 
 public void kiedWkladamyDolaraKasaGoPrzyjmie(){
 testObject.execute("D");
+    Mockito.verify(kasa).insertDollar(); // Mockito sprawdz czy w klasie "kasa" został wlozony dollar
+
 }
 }
 

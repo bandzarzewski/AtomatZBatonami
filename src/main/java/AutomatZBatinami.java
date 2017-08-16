@@ -12,5 +12,6 @@ public class AutomatZBatinami {
     public String execute(String input) {
         return null;
         
+        
     }
 }
