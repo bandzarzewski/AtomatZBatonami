@@ -24,7 +24,7 @@ public class AutomatZBatinami {
         if(input.charAt(i)=='d') {
             kasa.insertCent();}
     }
-        return null;
+        return kasa.getChange();
         
         
     }

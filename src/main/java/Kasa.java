@@ -6,4 +6,5 @@ public interface Kasa { // to jest interface
     void insertQuarter();
     void insertNikiel();
     void insertCent();
+    String  getChange();
 }
