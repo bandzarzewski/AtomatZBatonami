@@ -57,6 +57,15 @@ public void init(){
 
     }
 
+    @Test
+    public void kiedyWloze2DollaryKasaMaJePrzyjac(){
+        testObject.execute("DD");
+        Mockito.verify(kasa,Mockito.times(2)).insertDollar();// w tym miejscu sprawdzamy czy zostala wywolana dwa razy
+        Mockito.verifyNoMoreInteractions(kasa);
+
+    }
+
+    // (DDQNdQDNd -> czy metoda zadziała  )
 }
 
 

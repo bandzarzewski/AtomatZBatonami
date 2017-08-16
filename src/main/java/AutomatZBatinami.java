@@ -10,18 +10,20 @@ public class AutomatZBatinami {
     }
 
     public String execute(String input) {
-       if(input.contains("D"))
+        for (int i = 0; i <input.length() ; i++) {
+
+       if(input.charAt(i)=='D') // spradzamy co jest na i-pozycji
        { kasa.insertDollar();
        }
-       if(input.contains("Q")) {
+       if(input.charAt(i)=='Q') {
        kasa.insertQuarter();}
 
-        if(input.contains("N"))
+        if(input.charAt(i)=='N')
         { kasa.insertNikiel();
         }
-        if(input.contains("d")) {
+        if(input.charAt(i)=='d') {
             kasa.insertCent();}
-
+    }
         return null;
         
         
