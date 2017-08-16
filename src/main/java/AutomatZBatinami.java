@@ -10,7 +10,12 @@ public class AutomatZBatinami {
     }
 
     public String execute(String input) {
-        kasa.insertDollar();
+       if(input.equals("D"))
+       { kasa.insertDollar();
+       }
+       if(input.equals("Q")) {
+       kasa.insertQuarter();}
+
         return null;
         
         

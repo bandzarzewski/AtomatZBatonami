@@ -13,9 +13,7 @@ import java.nio.channels.Pipe;
 public class VendingMachineTest {
 
 Kasa kasa;
-
 Produkty produkty;
-
 AutomatZBatinami testObject=new AutomatZBatinami(kasa,produkty);
 
 
@@ -29,11 +27,17 @@ public void init(){
 
     @Test
     public void kiedWkladamyDolaraKasaGoPrzyjmie(){
-
     testObject.execute("D");
     Mockito.verify(kasa).insertDollar(); // Mockito sprawdz czy w klasie "kasa" został wlozony dollar
-
 }
+
+    @Test
+    public void kiedWkladamyQuarterKasaGoPrzyjmie(){
+        testObject.execute("Q");
+        Mockito.verify(kasa).insertQuarter();
+        Mockito.verifyNoMoreInteractions(kasa);
+    }
+
 }
 
 
