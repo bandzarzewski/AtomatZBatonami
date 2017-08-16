@@ -10,6 +10,7 @@ public class AutomatZBatinami {
     }
 
     public String execute(String input) {
+        kasa.insertDollar();
         return null;
         
         

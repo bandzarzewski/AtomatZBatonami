@@ -3,4 +3,5 @@
  */
 public interface Kasa {
     void insertDollar();
+
 }
