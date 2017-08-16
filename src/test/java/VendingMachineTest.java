@@ -38,6 +38,17 @@ public void init(){
         Mockito.verifyNoMoreInteractions(kasa);
     }
 
+    // N
+    // d
+    @Test
+    public void kiedyWloze2RozneMonetyKasaJePrzyjela(){
+        testObject.execute("DQ");
+        Mockito.verify(kasa).insertQuarter();
+        Mockito.verify(kasa).insertDollar();
+        Mockito.verifyNoMoreInteractions(kasa);
+
+    }
+
 }
 
 
