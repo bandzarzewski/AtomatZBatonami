@@ -10,7 +10,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.nio.channels.Pipe;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 //@RunWith(MockitoJUnitRunner.class)
 public class VendingMachineTest {
@@ -72,7 +74,6 @@ public void init(){
     public void kiedyWloze2DollaryKasaMaJePrzyjac(){
         testObject.execute("DD");
         verify(kasa,Mockito.times(2)).insertDollar();// w tym miejscu sprawdzamy czy zostala wywolana dwa razy
-
         checkIfRetrunChangeandNoMoreInteraction();
     }
 
@@ -80,12 +81,12 @@ public void init(){
 
     @Test
     public void kiedyWłozeDolaraIWybioreProduktNaKotregoMnieNieStacDostaneGoSpwrotem(){
-        Mockito.when(kasa.getChange()).thenReturn("D"); // kiedy warunke sie pojawi to wykonaj ... // kiedy poajwi sie polecenie zwroc reszte to zwroc kase
+        when(kasa.getChange()).thenReturn("D"); // kiedy warunke sie pojawi to wykonaj ... // kiedy poajwi sie polecenie zwroc reszte to zwroc kase
         String result=testObject.execute("DA");
         // sprawdzamy do dostalimsy na wyjsciu z funkcji
         verify(kasa).insertDollar();
         checkIfRetrunChangeandNoMoreInteraction();
-        Assert.assertEquals("D",result);
+        assertEquals("D",result);
 
     }
 
