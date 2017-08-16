@@ -10,6 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.nio.channels.Pipe;
 
+import static org.mockito.Mockito.verify;
+
 //@RunWith(MockitoJUnitRunner.class)
 public class VendingMachineTest {
 
@@ -29,19 +31,22 @@ public void init(){
     @Test
     public void kiedWkladamyDolaraKasaGoPrzyjmie(){
     testObject.execute("D");
-    Mockito.verify(kasa).insertDollar(); // Mockito sprawdz czy w klasie "kasa" został wlozony dollar
+    verify(kasa).insertDollar(); // Mockito sprawdz czy w klasie "kasa" został wlozony dollar
 
-        Mockito.verify(kasa).getChange();
+        checkIfRetrunChangeandNoMoreInteraction();
+
+    }
+
+    private void checkIfRetrunChangeandNoMoreInteraction() {
+        verify(kasa).getChange();
         Mockito.verifyNoMoreInteractions(kasa);
-
     }
 
     @Test
     public void kiedWkladamyQuarterKasaGoPrzyjmie(){
         testObject.execute("Q");
-        Mockito.verify(kasa).insertQuarter();
-                Mockito.verify(kasa).getChange();
-        Mockito.verifyNoMoreInteractions(kasa);
+        verify(kasa).insertQuarter();
+        checkIfRetrunChangeandNoMoreInteraction();
     }
 
     // N
@@ -49,29 +54,26 @@ public void init(){
     @Test
     public void kiedyWloze2RozneMonetyKasaJePrzyjela(){
         testObject.execute("DQ");
-        Mockito.verify(kasa).insertQuarter();
-        Mockito.verify(kasa).insertDollar();
+        verify(kasa).insertQuarter();
+        verify(kasa).insertDollar();
 
-        Mockito.verify(kasa).getChange();
-        Mockito.verifyNoMoreInteractions(kasa);
+        checkIfRetrunChangeandNoMoreInteraction();
     }
     @Test
     public void kiedyWloze2RozneMonetyNdKasaJePrzyjela(){
         testObject.execute("Nd");
-        Mockito.verify(kasa).insertNikiel();
-        Mockito.verify(kasa).insertCent();
+        verify(kasa).insertNikiel();
+        verify(kasa).insertCent();
 
-        Mockito.verify(kasa).getChange();
-        Mockito.verifyNoMoreInteractions(kasa);
+        checkIfRetrunChangeandNoMoreInteraction();
     }
 
     @Test
     public void kiedyWloze2DollaryKasaMaJePrzyjac(){
         testObject.execute("DD");
-        Mockito.verify(kasa,Mockito.times(2)).insertDollar();// w tym miejscu sprawdzamy czy zostala wywolana dwa razy
+        verify(kasa,Mockito.times(2)).insertDollar();// w tym miejscu sprawdzamy czy zostala wywolana dwa razy
 
-        Mockito.verify(kasa).getChange();
-        Mockito.verifyNoMoreInteractions(kasa);
+        checkIfRetrunChangeandNoMoreInteraction();
     }
 
     // (DDQNdQDNd -> czy metoda zadziała  )
@@ -81,9 +83,8 @@ public void init(){
         Mockito.when(kasa.getChange()).thenReturn("D"); // kiedy warunke sie pojawi to wykonaj ... // kiedy poajwi sie polecenie zwroc reszte to zwroc kase
         String result=testObject.execute("DA");
         // sprawdzamy do dostalimsy na wyjsciu z funkcji
-        Mockito.verify(kasa).insertDollar();
-        Mockito.verify(kasa).getChange();
-        Mockito.verifyNoMoreInteractions(kasa);
+        verify(kasa).insertDollar();
+        checkIfRetrunChangeandNoMoreInteraction();
         Assert.assertEquals("D",result);
 
     }
