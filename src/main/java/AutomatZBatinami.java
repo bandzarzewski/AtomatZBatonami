@@ -8,4 +8,9 @@ public class AutomatZBatinami {
         this.kasa = kasa;
         this.produkty = produkty;
     }
+
+    public String execute(String input) {
+        return null;
+        
+    }
 }

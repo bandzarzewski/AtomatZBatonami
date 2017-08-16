@@ -1,3 +1,4 @@
+import org.junit.Test;
 import org.mockito.Mock;
 
 import java.nio.channels.Pipe;
@@ -10,5 +11,12 @@ Kasa kasa;
 Produkty produkty;
 
 AutomatZBatinami testObject=new AutomatZBatinami(kasa,produkty);
+
+@Test
+
+public void kiedWkladamyDolaraKasaGoPrzyjmie(){
+testObject.execute("D");
+}
+}
 
 
