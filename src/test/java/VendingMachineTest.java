@@ -48,6 +48,14 @@ public void init(){
         Mockito.verifyNoMoreInteractions(kasa);
 
     }
+    @Test
+    public void kiedyWloze2RozneMonetyNdKasaJePrzyjela(){
+        testObject.execute("Nd");
+        Mockito.verify(kasa).insertNikiel();
+        Mockito.verify(kasa).insertCent();
+        Mockito.verifyNoMoreInteractions(kasa);
+
+    }
 
 }
 

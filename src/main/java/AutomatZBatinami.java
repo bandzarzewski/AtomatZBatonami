@@ -10,11 +10,17 @@ public class AutomatZBatinami {
     }
 
     public String execute(String input) {
-       if(input.equals("D"))
+       if(input.contains("D"))
        { kasa.insertDollar();
        }
-       if(input.equals("Q")) {
+       if(input.contains("Q")) {
        kasa.insertQuarter();}
+
+        if(input.contains("N"))
+        { kasa.insertNikiel();
+        }
+        if(input.contains("d")) {
+            kasa.insertCent();}
 
         return null;
         
